@@ -25047,11 +25047,29 @@ var global = arguments[3];
 },{}],"script.js":[function(require,module,exports) {
 var lodash = require("lodash");
 
-var moment = require("moment");
+var characters = ["a", "b", "c", "d", "e", "i"];
+var chunk = lodash.chunk(characters, 2);
+console.log(chunk);
+console.log(lodash.difference([2, 3], [3, 4]));
+console.log(lodash.compact([0, 1, false, 2, "", 3]));
+var array = [1, 2, 3];
+console.log(lodash.concat(array, 2, [3], [[4]]));
+console.log(lodash.differenceBy([2.1, 1.2], [2.3, 3.4], Math.floor)); // drop
 
-var charecter = ["a", "b", "c", "d"];
-var chinked = lodash.chunk(charecter, 2);
-console.log(chinked); // moment js
+console.log(lodash.drop([1, 2, 3]));
+console.log(lodash.drop([1, 2, 3], 2));
+console.log(lodash.drop([1, 2, 3], 5));
+console.log(lodash.drop([1, 2, 3], 0)); // dropRight
+
+console.log(lodash.dropRight([1, 2, 3]));
+console.log(lodash.dropRight([1, 2, 3], 2));
+console.log(lodash.dropRight([1, 2, 3], 5));
+console.log(lodash.dropRight([1, 2, 3], 0)); // array
+
+var array = [1, 2, 3];
+console.log(lodash.fill(array, "a")); // moment js
+
+var moment = require("moment");
 
 var a = moment().format('MMMM Do YYYY, h:mm:ss a');
 console.log(a);
@@ -25071,6 +25089,14 @@ var subMonths = moment().subtract(7, 'months').calendar();
 console.log(subMonths);
 var subYears = moment().subtract(10, 'years').calendar();
 console.log(subYears);
+var a = moment([2014 - 11 - 11]);
+var b = moment([2015 - 09 - 11]);
+var d = a.diff(b, 'days');
+console.log(d);
+var gap1 = moment("20141111", "YYYYMMDD").fromNow();
+var gap2 = moment("20150911", "YYYYMMDD").fromNow();
+console.log(gap1);
+console.log(gap2);
 },{"lodash":"node_modules/lodash/lodash.js","moment":"node_modules/moment/moment.js"}],"../../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -25099,7 +25125,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63956" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64952" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
