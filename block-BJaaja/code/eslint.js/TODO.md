@@ -26,7 +26,7 @@ if (true) {
 1.
 
 ```js
-var num = 10;
+let num = 10;
 
 var increaseNumber = () => num++;
 var increasePassedNumber = (number) => number++;
@@ -36,6 +36,8 @@ var num2 = increasePassedNumber(num1);
 
 console.log(num1);
 console.log(num2);
+
+const increaseNumber = () => num++;
 ```
 
 2.
@@ -50,9 +52,7 @@ var animalMethods = {
     return this.location;
   },
   summary: function () {
-    console.log(
-      `I live in ${this.location} and I have ${this.numberOfLegs}`
-    );
+    console.log(`I live in ${this.location} and I have ${this.numberOfLegs}`);
   },
 };
 
@@ -90,12 +90,7 @@ var dogsMethods = {
 
 Object.setPrototypeOf(dogsMethods, animalMethods);
 
-function createCat(
-  location,
-  numberOfLegs,
-  name,
-  colorOfEyes
-) {
+function createCat(location, numberOfLegs, name, colorOfEyes) {
   let obj = createAnimal(location, numberOfLegs);
   Object.setPrototypeOf(obj, catsMethods);
   obj.name = name;
@@ -136,6 +131,15 @@ const obj = {
   mayTheFourth: 4,
   anakinSkywalker,
 };
+//good
+const obj = {
+  lukeSkywalker,
+  anakinSkywalker,
+  episodeOne: 1,
+  twoJediWalkIntoACantina: 2,
+  episodeThree: 3,
+  mayTheFourth: 4,
+};
 ```
 
 4.
@@ -145,6 +149,16 @@ function getFullName(user) {
   const firstName = user.firstName;
   const lastName = user.lastName;
 
+  return `${firstName} ${lastName}`;
+}
+
+//good practices
+function getFullName(user) {
+  const { firstName, lastName } = user;
+  return `${firstName} ${lastName}`;
+}
+//best
+function getFullName({ firstName, lastName }) {
   return `${firstName} ${lastName}`;
 }
 ```
